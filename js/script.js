@@ -1,21 +1,56 @@
 console.log("script.js connected!");
 
-let buttons = document.querySelectorAll("#mood-buttons button");
+document.addEventListener('DOMContentLoaded', () => {
+    // Store user answers: {questionId: points}
+    const userAnswers = {};
 
-buttons.forEach(function(button){
-  button.addEventListener("click", function() {
-    // Remove the selected class from all button 
-    buttons.forEach(function(btn) {
-      btn.classList.remove("selected"); 
+    // 1. Select all question blocks
+    const questions = document.querySelectorAll('.question-block');
+
+    questions.forEach(question => {
+        const buttons = question.querySelectorAll('.answer-btn');
+
+        buttons.forEach(button => {
+            button.addEventListener('click', () => {
+                // Toggle "selected" visual state
+                buttons.forEach(btn => btn.classList.remove('active', 'btn-primary'));
+                buttons.forEach(btn => btn.classList.add('btn-outline-primary'));
+                
+                button.classList.add('active', 'btn-primary');
+                button.classList.remove('btn-outline-primary');
+
+                // Store the points
+                const qId = question.getAttribute('data-question-id');
+                const points = parseInt(button.getAttribute('data-points'));
+                userAnswers[qId] = points;
+                
+                console.log(userAnswers); // Test to verify storage
+            });
+        });
     });
-    // Add the selected class to only the one that is clicked
-    button.classList.add("selected");
-    
-    // Code from previous step
-    let emoji = button.textContent; 
-    let output = document.getElementById("output-message"); 
-    output.textContent = `You're feeling ${emoji} today!`;
-    // Similar to writing "You're feeeling " + emoji + " today!" 
-    
-  })
-})
+
+    // 2. Calculation Logic
+    const resultBtn = document.getElementById('result-btn');
+    const resultContainer = document.getElementById('result-container');
+    const resultText = document.getElementById('result-text');
+
+    resultBtn.addEventListener('click', () => {
+        // Calculate total score
+        let totalScore = 0;
+        for (let qId in userAnswers) {
+            totalScore += userAnswers[qId];
+        }
+
+        // Determine result based on points
+        let category = "";
+        if (totalScore >= 4 && totalScore <= 6) category = "Explorer";
+        else if (totalScore >= 7 && totalScore <= 9) category = "Artist";
+        else if (totalScore >= 10 && totalScore <= 12) category = "Leader";
+        else if (totalScore >= 13 && totalScore <= 16) category = "Thinker";
+        else category = "Please answer all questions.";
+
+        // Update UI
+        resultText.textContent = `You are: ${category} (Score: ${totalScore})`;
+        resultContainer.style.display = 'block';
+    });
+});
