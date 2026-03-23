@@ -1,7 +1,7 @@
 console.log("script.js connected!");
 
 document.addEventListener('DOMContentLoaded', () => {
-    // Store user answers: {questionId: points}
+    // Stores all user answers: {questionId: points}
     const userAnswers = {};
 
     // 1. Select all question blocks
@@ -12,14 +12,14 @@ document.addEventListener('DOMContentLoaded', () => {
 
         buttons.forEach(button => {
             button.addEventListener('click', () => {
-                // Toggle "selected" visual state
+                // Toggles "selected" visual state
                 buttons.forEach(btn => btn.classList.remove('active', 'btn-primary'));
                 buttons.forEach(btn => btn.classList.add('btn-outline-primary'));
                 
                 button.classList.add('active', 'btn-primary');
                 button.classList.remove('btn-outline-primary');
 
-                // Store the points
+                // Stores the user's points
                 const qId = question.getAttribute('data-question-id');
                 const points = parseInt(button.getAttribute('data-points'));
                 userAnswers[qId] = points;
