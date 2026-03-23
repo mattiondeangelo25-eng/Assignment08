@@ -9,32 +9,61 @@
     <link rel="stylesheet" href ="./css/style.css">
 </head>
 <body>
-    <h1 class="text-center mt-4">YOUR QUIZ TITLE HERE</h1>
-    
-    <!-- Start quiz element -->
-    <div class="container d-flex justify-content-center" id="question-1">
-      <div class="card my-4 p-4 question-block" style="width: 75%;">
-        <h4 class="mb-3">YOUR QUIZ QUESTION HERE</h4>
-        <div class="row g-2">
-          <div class="col-6">
-            <button class="btn btn-outline-primary w-100 answer-btn" data-answer="A">ANSWER CHOICE A</button>
-          </div>
-          <div class="col-6">
-            <button class="btn btn-outline-primary w-100 answer-btn" data-answer="B">ANSWER CHOICE B</button>
-          </div>
-          <div class="col-6">
-            <button class="btn btn-outline-primary w-100 answer-btn" data-answer="C">ANSWER CHOICE C</button>
-          </div>
-          <div class="col-6">
-            <button class="btn btn-outline-primary w-100 answer-btn" data-answer="D">ANSWER CHOICE D</button>
-          </div>
+<div class="container mt-5">
+    <h1 class="mb-4">Personality Quiz</h1>
+
+    <!-- Start quiz element (Duplicate this block for more questions) -->
+    <div class="question-block mb-4 p-3 border rounded" data-question-id="1">
+        <h5>1. What is your ideal weekend activity?</h5>
+        <div class="answer-options d-grid gap-2">
+            <button class="btn btn-outline-primary answer-btn" data-answer="A" data-points="3">Explore a new city</button>
+            <button class="btn btn-outline-primary answer-btn" data-answer="B" data-points="4">Paint or visit a gallery</button>
+            <button class="btn btn-outline-primary answer-btn" data-answer="C" data-points="1">Organize a community event</button>
+            <button class="btn btn-outline-primary answer-btn" data-answer="D" data-points="2">Read a complex book</button>
         </div>
-      </div>
+    </div>
+    <!-- End quiz element -->
+
+    <!-- Question 2 -->
+    <div class="question-block mb-4 p-3 border rounded" data-question-id="2">
+        <h5>2. What is your go-to role in a group?</h5>
+        <div class="answer-options d-grid gap-2">
+            <button class="btn btn-outline-primary answer-btn" data-answer="A" data-points="3">The Trailblazer</button>
+            <button class="btn btn-outline-primary answer-btn" data-answer="B" data-points="4">The Creative</button>
+            <button class="btn btn-outline-primary answer-btn" data-answer="C" data-points="1">The Organizer</button>
+            <button class="btn btn-outline-primary answer-btn" data-answer="D" data-points="2">The Strategist</button>
+        </div>
     </div>
 
-    
-    
-    <!-- End quiz element -->
+    <!-- Question 3 -->
+    <div class="question-block mb-4 p-3 border rounded" data-question-id="3">
+        <h5>3. Choose a, metaphorically, "new frontier":</h5>
+        <div class="answer-options d-grid gap-2">
+            <button class="btn btn-outline-primary answer-btn" data-answer="A" data-points="3">The Mountains</button>
+            <button class="btn btn-outline-primary answer-btn" data-answer="B" data-points="4">The Canvas</button>
+            <button class="btn btn-outline-primary answer-btn" data-answer="C" data-points="1">The Team</button>
+            <button class="btn btn-outline-primary answer-btn" data-answer="D" data-points="2">The Concept</button>
+        </div>
+    </div>
+
+    <!-- Question 4 -->
+    <div class="question-block mb-4 p-3 border rounded" data-question-id="4">
+        <h5>4. How do you solve problems?</h5>
+        <div class="answer-options d-grid gap-2">
+            <button class="btn btn-outline-primary answer-btn" data-answer="A" data-points="3">Take risks</button>
+            <button class="btn btn-outline-primary answer-btn" data-answer="B" data-points="4">Find new perspectives</button>
+            <button class="btn btn-outline-primary answer-btn" data-answer="C" data-points="1">Lead others</button>
+            <button class="btn btn-outline-primary answer-btn" data-answer="D" data-points="2">Deep analysis</button>
+        </div>
+    </div>
+
+    <button id="result-btn" class="btn btn-success btn-lg mt-3">Give Me the Results</button>
+
+    <!-- Result Display -->
+    <div id="result-container" class="mt-4 p-4 border rounded bg-light" style="display:none;">
+        <h2 id="result-text"></h2>
+    </div>
+</div>
 
     <!-- Add more quiz elements here -->
 
